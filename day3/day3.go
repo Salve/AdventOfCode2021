@@ -40,7 +40,7 @@ func part2() {
 	o2rating := process(o2filter, inputs())
 	co2rating := process(co2filter, inputs())
 
-	fmt.Printf("Part 1: o2 rating: %d, co2 rating: %d, life-support rating: %d\n\n", o2rating, co2rating, int(o2rating)*int(co2rating))
+	fmt.Printf("Part 2: o2 rating: %d, co2 rating: %d, life-support rating: %d\n\n", o2rating, co2rating, int(o2rating)*int(co2rating))
 }
 
 type bitCriteria func(most, least uint16) uint16
