@@ -7,6 +7,7 @@ import (
 	"AdventOfCode2021/day4"
 	"AdventOfCode2021/day5"
 	"AdventOfCode2021/day6"
+	"AdventOfCode2021/day7"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 		day4.Run,
 		day5.Run,
 		day6.Run,
+		day7.Run,
 	}
 
 	days[len(days)-1]()
