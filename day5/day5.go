@@ -18,24 +18,22 @@ func Run() {
 }
 
 func part1() {
-	lines := inputs()
-	diagram := diagram{}
-	for _, line := range lines {
+	var d diagram
+	for _, line := range inputs() {
 		if !line.straight() {
 			continue
 		}
-		diagram.chart(line)
+		d.chart(line)
 	}
-	fmt.Printf("Part 1: %d\n\n", diagram.count())
+	fmt.Printf("Part 1: %d\n\n", d.count())
 }
 
 func part2() {
-	lines := inputs()
-	diagram := diagram{}
-	for _, line := range lines {
-		diagram.chart(line)
+	var d diagram
+	for _, line := range inputs() {
+		d.chart(line)
 	}
-	fmt.Printf("Part 2: %d\n\n", diagram.count())
+	fmt.Printf("Part 2: %d\n\n", d.count())
 }
 
 type point struct {
@@ -50,8 +48,7 @@ func (l line) straight() bool {
 	return l.a.x == l.b.x || l.a.y == l.b.y
 }
 
-type diagram [1000][1000]diagramCount
-type diagramCount int
+type diagram [1000][1000]int
 
 func (d *diagram) chart(l line) {
 	d[l.a.x][l.a.y]++
@@ -75,9 +72,9 @@ func (d *diagram) chart(l line) {
 }
 
 func (d diagram) count() (c int) {
-	for _, row := range d {
-		for _, point := range row {
-			if point > 1 {
+	for x := range d {
+		for y := range d[x] {
+			if d[x][y] > 1 {
 				c++
 			}
 		}
