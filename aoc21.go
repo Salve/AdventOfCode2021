@@ -2,6 +2,7 @@ package main
 
 import (
 	"AdventOfCode2021/day1"
+	"AdventOfCode2021/day10"
 	"AdventOfCode2021/day2"
 	"AdventOfCode2021/day3"
 	"AdventOfCode2021/day4"
@@ -23,6 +24,7 @@ func main() {
 		day7.Run,
 		day8.Run,
 		day9.Run,
+		day10.Run,
 	}
 
 	days[len(days)-1]()
