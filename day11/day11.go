@@ -33,23 +33,29 @@ func part2() {
 	fmt.Printf("Part 2 answer: %d\n\n", i+1)
 }
 
+type point struct{ x, y int }
+type cave map[point]uint8
+
 func (c cave) step() (flashes int) {
 	c.inc()
-	high := c.high()
-	for len(high) > 0 {
-		flashes += len(high)
-		for _, p := range high {
-			c.flash(p)
-		}
-		high = c.high()
-	}
-	return flashes
+	return c.count()
 }
 
 func (c cave) inc() {
 	for p := range c {
 		c[p]++
 	}
+}
+
+func (c cave) count() (flashes int) {
+	for _, p := range c.high() {
+		flashes++
+		c.flash(p)
+	}
+	if flashes == 0 {
+		return 0
+	}
+	return flashes + c.count()
 }
 
 func (c cave) high() (o []point) {
@@ -79,9 +85,6 @@ func (c cave) adjacent(p point) (a []point) {
 	}
 	return a
 }
-
-type cave map[point]uint8
-type point struct{ x, y int }
 
 func inputs() cave {
 	o := make(cave, 100)
